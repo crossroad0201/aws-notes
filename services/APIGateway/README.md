@@ -14,3 +14,16 @@ API Gateway
 * CORSを有効にした場合は、Lambda関数からのレスポンスで `Access-Control-Allow-Origin` ヘッダを返す必要がある。
   * [Amazon API GatewayをCross-Originで利用する設定、Cross-Originせずに利用する設定のまとめ](https://qiita.com/aiwas/items/116a1039558bec1c5edd)
   * [AWS Lambda Proxy Integrationを試してみた](https://qiita.com/seiya_orz/items/2bd83204e212e35b2c6c#cors%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E8%BF%BD%E8%A8%9820161116)
+
+# カスタムドメイン
+
+* この機能を使うことで、 *CloudFront* に API とマッピングされたディストリビューションが作成される。
+  * API呼び出し時のパスと、呼び出す API（およびそのステージ）を柔軟にマッピングできるのが便利。
+
+* 指定する *カスタムドメイン名* と重複するドメインが *CloudFront* に存在すると作成できない。
+  * 例えば、すでに `*.example.com` と言うドメインが存在する場合は、`foo.example.com` や `bar.example.com` と言うカスタムドメインは作成できない。
+  * SPAアプリを `CloudFront` で配信する場合、SPA と API は別ドメインにしないといけない？？
+
+* 指定する *ACM証明書* は、`us-east-1` に作成しなければならない。（エッジ最適化の関係か？）
+
+* 指定する *カスタムドメイン名* と、 *ACM証明書* のドメインは一致していないといけない。（カスタムドメインが作成されたかのように見えるが、 *CloudFront* にディストリビューションが作成されない）
