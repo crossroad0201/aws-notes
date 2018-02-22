@@ -21,4 +21,11 @@ Lambda
 * ひとつのLambda関数で、バージョンとエイリアスによって環境（本番環境とテスト環境など）の違いを扱うのは運用しづらい。
   * 環境変数、タグは `$LATEST` でしか変更できない。
 
+* Lambda関数の [同時実行数には制限](https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/concurrent-executions.html#concurrent-execution-safety-limit) がある。
+  * *CloudWatch* の *Lambda/ConcurrentExecution* メトリクスを監視し、必要であれば制限緩和を申請する必要がある。
 
+# コスト
+
+* 実行回数に対する従量課金で、Lambda関数を作成しておくだけならコストはかからない。
+
+* 向上的にある程度のトランザクションが発生するような用途であれば、Lambdaよりサーバ（EC2やECSなど）を使うほうがコスト安になる場合がある。
