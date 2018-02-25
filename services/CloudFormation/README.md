@@ -6,7 +6,7 @@ Cloud Formation
 * テンプレートは YAML で書く。
   * JSONはつらい。（煩雑、コメントが書けないなど）
 
-* AWSコンソールによるGUI操作による運用は煩雑になる`ので、CLIから操作できる何らかのツール／フレームワークの使用が望ましい。
+* AWSコンソールからのGUI操作による運用は煩雑になるので、CLIから操作できる何らかのツール／フレームワークの使用が望ましい。
   * [Serverless Framework](https://serverless.com)
   * [fabricawscfn](https://github.com/crossroad0201/fabric-aws-cloudformation)
   * etc
