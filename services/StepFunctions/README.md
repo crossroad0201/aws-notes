@@ -4,11 +4,11 @@ Step Functions
 # 全般
 
 * ステートマシンには[名前](https://docs.aws.amazon.com/cli/latest/reference/stepfunctions/create-state-machine.html)を付ける。
-  * デフォルトだと無為な名前になるので、Step Functions* のコンソール上で見たときに何がなにかわからなくなる。
+  * デフォルトだと無為な名前になるので、 *Step Functions* のコンソール上で見たときに何がなにかわからなくなる。
 
 
 * ステートマシンの起動時には、明示的にわかりやすい[名前](https://docs.aws.amazon.com/cli/latest/reference/stepfunctions/start-execution.html)を付ける。
-  * デフォルトだと UUID になるので、Step Functions* のコンソール上で見たときに何がなにかわからなくなる。
+  * デフォルトだと UUID になるので、 *Step Functions* のコンソール上で見たときに何がなにかわからなくなる。
 
 * ステートマシンの起動は、非同期しかできない。（ステートマシンの終了を同期的に待つことはできない）
   * ステートマシンの終了を知りたい場合は、自前で（DynamoDBに記録するなどして）状態管理する必要がある。
@@ -33,7 +33,7 @@ Step Functions
 
 * ステートマシンからのLambda関数の呼び出し時には、AWSのインフラ都合による瞬断などが発生しうるため、適切なエラー処理を入れておく。
   * [TimeoutSeconds](https://docs.aws.amazon.com/ja_jp/step-functions/latest/dg/sfn-stuck-execution.html) を指定して、Lambda関数の呼び出しがスタックしないようにする。
-  * リトライ処理を入れて、自動的に復旧させる。
+  * [リトライ処理](docs.aws.amazon.com/ja_jp/step-functions/latest/dg/amazon-states-language-errors.html#amazon-states-language-retrying-after-error) を入れて、自動的に復旧させる。
     * どのようなエラーが発生するか、網羅的な情報がないので全エラー（`States.ALL`）を対象にリトライを入れておく。
     * エラーには継承関係がある。Java SDKの [APIドキュメント](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/lambda/model/AWSLambdaException.html) の継承関係を参照。
 
@@ -47,7 +47,7 @@ States:
   example:
     Type: Task
     Resource: arn:aws:lambda:us-east-1:9999999999:function:example:${opt:stage}
-	TimeoutSeconds: 300
+    TimeoutSeconds: 300
     End: true
     Retry:
       - ErrorEquals:
