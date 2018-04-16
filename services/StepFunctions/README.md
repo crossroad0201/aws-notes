@@ -15,8 +15,7 @@ Step Functions
 
 * 1秒あたりのステートマシンの起動数には制限がある。（デフォルトだと [25回/秒](https://docs.aws.amazon.com/ja_jp/step-functions/latest/dg/limits.html#service-limits-api-action-throttling)）
   * 必要であれば制限緩和を申請する。ただし、比較的申請が通りにくく対応にもやや時間がかかる上に、上限が低い（実績で 200 が限度）
-  * コスト面でも、向上的にトラフィックが発生するような用途には向かない。
-
+  * コスト面でも、恒常的にトラフィックが発生するような用途には向かない。
 # コスト
 
 * ステートマシン内の [状態遷移ごとに課金](https://aws.amazon.com/jp/step-functions/pricing/) されるため、トランザクション量が多い場合は *EC2* などのサーバーを立てたほうが安くなる。
