@@ -38,6 +38,10 @@ Dynamo DB
 * テーブルとは別にキャパシティを消費する。
   * オートスケールの設定も別途必要。
 
+# クエリ
+
+* テーブルおよびインデックスのキー属性（ハッシュキー、レンジキー）に対しては、[キー条件式](https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/Query.html#Query.KeyConditionExpressions) であげられている式しか使えない。（IN句や、ORなどの論理演算式も使えない）
+
 # オートスケーリング
 
 * プロビジョニング済みキャパシティの超過を検知してから、実際にキャパシティがスケールされるまで数分程度のタイムラグがある。

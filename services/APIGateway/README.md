@@ -12,6 +12,7 @@ API Gateway
   * [プロキシ統合のための Lambda 関数の出力形式](https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html#api-gateway-simple-proxy-for-lambda-output-format)
 
 * APIのタイムアウト時間は最大 29秒 までしか伸ばせない。
+  * *Lambda* のタイムアウトをそれ以上伸ばしても意味がない。（*API G/W*はタイムアウトを返すが、＊Lambda*はそのまま動き続ける）
 
 * CORSを有効にした場合は、Lambda関数からのレスポンスで `Access-Control-Allow-Origin` ヘッダを返す必要がある。
   * [Amazon API GatewayをCross-Originで利用する設定、Cross-Originせずに利用する設定のまとめ](https://qiita.com/aiwas/items/116a1039558bec1c5edd)
@@ -20,11 +21,11 @@ API Gateway
 # カスタムドメイン
 
 * この機能を使うことで、 *CloudFront* に API とマッピングされたディストリビューションが作成される。
-  * API呼び出し時のパスと、呼び出す API（およびそのステージ）を柔軟にマッピングできるのが便利。
+  * API呼び出し時のパスと、呼び出す API（およびそのステージ）を柔軟にマッピングできるのが便利。逆にこの機能でなければ、 *API G/W* のステージにドメインをマッピングすることはできない。（Ex. `dev.api.example.com` -> `/dev`）
 
-* 指定する *カスタムドメイン名* と重複するドメインが *CloudFront* に存在すると作成できない。
+* 指定する *カスタムドメイン名* と重複する（包含する）ドメインが *CloudFront* に存在すると作成できない。
   * 例えば、すでに `*.example.com` と言うドメインが存在する場合は、`foo.example.com` や `bar.example.com` と言うカスタムドメインは作成できない。
-  * SPAアプリを `CloudFront` で配信する場合、SPA と API は別ドメインにしないといけない？？
+  * SPAアプリを `CloudFront` で配信する場合、SPA と API は別ドメインにしておいたほうが良い。（Ex. API `*.api.example.com`、SPA `*.console.example.com`）
 
 * 指定する *ACM証明書* は、`us-east-1` に作成しなければならない。（エッジ最適化の関係か？）
 
