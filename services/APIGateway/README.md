@@ -13,6 +13,8 @@ API Gateway
 
 * APIのタイムアウト時間は最大 29秒 までしか伸ばせない。
   * *Lambda* のタイムアウトをそれ以上伸ばしても意味がない。（*API G/W*はタイムアウトを返すが、＊Lambda*はそのまま動き続ける）
+  * *API G/W* でタイムアウトするとクライアントには `502 Bad Gateway` が返されるため、APIの障害なのかタイムアウトなのかを判断できない。
+  タイムアウトであることを明示的に返す（`503 Service Unavailable` や `504 Gateway Timeout`）場合は、Lambda関数でそのレスポンスを返す必要がある。
 
 * CORSを有効にした場合は、Lambda関数からのレスポンスで `Access-Control-Allow-Origin` ヘッダを返す必要がある。
   * [Amazon API GatewayをCross-Originで利用する設定、Cross-Originせずに利用する設定のまとめ](https://qiita.com/aiwas/items/116a1039558bec1c5edd)
