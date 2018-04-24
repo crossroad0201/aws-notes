@@ -46,3 +46,8 @@ Kinesis
 * シーケンスNoは、シャード数変更／リシャーディングしても必ず大きな値になっていくことが保証される。
   * シーケンスNoの採番仕様は公開されていないが、シャードIDに応じた値＋時系列 になっているようだ。
 
+# リンク集
+
+## AWS公式
+
+* [開発者ガイド](https://docs.aws.amazon.com/ja_jp/streams/latest/dev/introduction.html)

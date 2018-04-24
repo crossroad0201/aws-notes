@@ -50,3 +50,9 @@ Dynamo DB
 * オートスケーリング設定を作成する際、秒間トランザクションに制限があるので、 *CloudFormation* などで一気にテーブル・オートスケーリング設定を作成する際は注意が必要。
   * 制限緩和依頼を出す。
   * *CloudFormation* テンプレートで `DependsOn` を指定してオートスケーリング設定が同時並行で作成されないようにする。
+
+# リンク集
+
+## AWS公式
+
+* [開発者ガイド](https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/Introduction.html)

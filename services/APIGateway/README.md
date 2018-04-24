@@ -32,3 +32,9 @@ API Gateway
 * 指定する *ACM証明書* は、`us-east-1` に作成しなければならない。（エッジ最適化の関係か？）
 
 * 指定する *カスタムドメイン名* と、 *ACM証明書* のドメインは一致していないといけない。（カスタムドメインが作成されたかのように見えるが、 *CloudFront* にディストリビューションが作成されない）
+
+# リンク集
+
+## AWS公式
+
+* [開発者ガイド](https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/welcome.html)
