@@ -3,8 +3,25 @@ SQS
 
 # 全般
 
+* 標準キューは順序保証されない。だいたいは送信した順に並ぶ、と言うこともなさそうなのでまったくバラバラの順序になると考えていい。
+
 * [ReceiveMessage API](https://docs.aws.amazon.com/ja_jp/AWSSimpleQueueService/latest/SQSDeveloperGuide/standard-queues.html#standard-queues-message-sample) はキューに溜まっているメッセージをすべて返してくれるわけではない。（たとえば、10メッセージ溜まっていても、2メッセージとか3メッセージしか取れないことがある）
 
+* キューの可視性タイムアウトは、そのメッセージを受信して実行される処理に要する時間を考慮して決定する。
+処理時間が可視性タイムアウトを超えてしまうと、そのメッセージは削除できなくなる。（削除しようとすると `The receipt handle has expired` エラーが発生する）
+
+# FIFOキュー
+
+* 一部のリージョンでしか使用できない。
+
+* 1度に受信できるメッセージ数など、標準キューと比較していろいろな制約があり、スループットも出ないし、スケールもしづらい。
+
+* メッセージ送信時に [メッセージグループID](https://docs.aws.amazon.com/ja_jp/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-understanding-logic) を指定する必要がある。
+  * この メッセージグループID 単位に順序保証される。
+  * 受信側は *メッセージグループID* を指定することはできない。メッセージ受信時には同じメッセージグループIDのメッセージが優先して取得される。
+  * メッセージグループID は、[メッセージ属性にセットされている] (https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc//com/amazonaws/services/sqs/model/MessageSystemAttributeName.html) はず。
+
+* メッセージは順序どおりにしか削除できない。
 
 # エラー処理
 
