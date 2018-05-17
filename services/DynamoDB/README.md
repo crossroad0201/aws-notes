@@ -51,6 +51,11 @@ Dynamo DB
   * 制限緩和依頼を出す。
   * *CloudFormation* テンプレートで `DependsOn` を指定してオートスケーリング設定が同時並行で作成されないようにする。
 
+# DynamoDBストリーム
+
+* トリガーとして設定できる *Lambda* は、基本的に1つだけ。
+  * *Kinesis* と同様、[内部的にはストリームをポーリングする](https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/with-ddb.html)ため、*Lambba* を複数設定するとストリームの [読み取りでスロットリングが発生](https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/Limits.html#limits-dynamodb-streams) する。
+
 # リンク集
 
 ## AWS公式
