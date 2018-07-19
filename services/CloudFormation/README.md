@@ -18,3 +18,8 @@ Cloud Formation
 * 条件によってリソースの作成する／しないを切り替えたい場合は、 [Condition](https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/conditions-section-structure.html) を使う。
   * `Outputs` でリソースを出力している場合は、`Outputs` にも `Condition` を指定する必要あり。
 
+# リンク集
+
+## AWS公式
+
+* [ユーザーガイド](https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/Welcome.html)

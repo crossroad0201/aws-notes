@@ -9,3 +9,10 @@ S3
 
   
 
+# リンク集
+
+## AWS公式
+
+* [開発者ガイド](https://docs.aws.amazon.com/ja_jp/AmazonS3/latest/dev/Welcome.html)
+
+

@@ -68,3 +68,8 @@ States:
     End: true
 ```
 
+# リンク集
+
+## AWS公式
+
+* [開発者ガイド](https://docs.aws.amazon.com/ja_jp/step-functions/latest/dg/welcome.html)

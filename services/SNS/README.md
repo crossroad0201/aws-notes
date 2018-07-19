@@ -9,3 +9,8 @@ SNS
 
 * *SQS* との連携では、 [FIFOキューはサポートされていない](https://aws.amazon.com/jp/sns/faqs/)。
 
+# リンク集
+
+## AWS公式
+
+* [開発者ガイド](https://docs.aws.amazon.com/ja_jp/sns/latest/dg/welcome.html)
