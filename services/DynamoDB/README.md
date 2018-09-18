@@ -25,6 +25,8 @@ Dynamo DB
 * バックアップ／リストアが難しい。
   * [オンデマンドバックアップ](https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/BackupRestore.html)
 
+* AWS公式の [DynamoDB のベストプラクティス](https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/best-practices.html) を確認する。
+
 # Local Secondary Index
 
 * テーブル作成と同時にしか作成できない。（後から追加はできない）
@@ -55,6 +57,8 @@ Dynamo DB
   * *CloudFormation* テンプレートで `DependsOn` を指定してオートスケーリング設定が同時並行で作成されないようにする。
 
 # DynamoDBストリーム
+
+* DynamoDBストリームのシャード数はテーブルのパーティション数によって決まるので、ハッシュキーが分散していればしているほどパーティションが分散してシャード数が多くなり、処理効率が高くなる。
 
 * トリガーとして設定できる *Lambda* は、基本的に1つだけ。
   * *Kinesis* と同様、[内部的にはストリームをポーリングする](https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/with-ddb.html)ため、*Lambba* を複数設定するとストリームの [読み取りでスロットリングが発生](https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/Limits.html#limits-dynamodb-streams) する。
